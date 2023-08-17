@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+   {% load static %}  
+   <head>
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>hightech</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- bootstrap css -->
+      <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+      <!-- style css -->
+      <link rel="stylesheet" href="{% static 'css/style.css' %}">
+      <!-- responsive-->
+      <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+      <!-- awesome fontfamily -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+   </head>
+   <!-- body -->
+   <body class="main-layout">
+      <!-- loader  -->
+      <div class="loader_bg">
+         <div class="loader"><img src="{% static 'images/loading.gif' %}" alt="" /></div>
+      </div>
+      <!-- end loader -->
+     <!-- header -->
+     {% if user.is_authenticated %}
+     <header>
+        <div class="header">
+           <div class="container-fluid">
+              <div class="row d_flex">
+                 <div class=" col-md-2 col-sm-3 col logo_section">
+                    <div class="full">
+                       <div class="center-desk">
+                          <div class="logo">
+                             <a href="{% url 'inicio' %}"><img src="{% static 'images/logo.png' %}" alt="#" /></a>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+                 <div class="col-md-8 col-sm-9">
+                    <nav class="navigation navbar navbar-expand-md navbar-dark ">
+                       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                       <span class="navbar-toggler-icon"></span>
+                       </button>
+                       <div class="collapse navbar-collapse" id="navbarsExample04">
+                          <ul class="navbar-nav mr-auto">
+                             <li class="nav-item">
+                                <a class="nav-link" href="{% url 'menumarcas' %}">Marcas</a>
+                             </li>
+                             <li class="nav-item">
+                                <a class="nav-link" href="{% url 'menumdi' %}">Modelos y diseños industriales</a>
+                             </li>
+                             <li class="nav-item">
+                                <a class="nav-link" href="{% url 'menupmu' %}">Patentes y modelos de utilidad</a>
+                             </li>
+                             <li class="nav-item">
+                                <a class="nav-link" href="{% url 'menuoys' %}">Obras literarias y software</a>
+                             </li>
+                             <li class="nav-item active">
+                                <a class="nav-link" href="{% url 'quiensoy' %}">Quien soy</a>
+                             </li>
+                             <li class="nav-item">
+                                <a class="nav-link" href="{% url 'editarPerfil' %}">Perfil de usuario </a>
+                             </li>
+                          </ul>
+                       </div>
+                    </nav>
+                 </div>
+                 <div class="col-md-2 d_none">
+                    <ul class="email text_align_right">
+                       <li> <a href="{% url 'logout' %}"> Salir </a></li>
+                       <li> <a href="Javascript:void(0)"> <i class="fa fa-search" style="cursor: pointer;" aria-hidden="true"> </i></a> </li>
+                    </ul>
+                 </div>
+              </div>
+           </div>
+        </div>
+     </header>
+     {% endif %}
+     <!-- end header -->
+      
+      <!-- we_do -->
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <table class="table">
+         <thead>
+           <tr>
+             <th>ID</th>
+             <th>TIPO</th>
+             <th>DENOMINACION</th>
+             <th>FECHA DE PRESENTACION</th>
+             <th>FECHA DE OTORGAMIENTO</th>
+             <th>ACCIONES</th>
+           </tr>
+         </thead>
+         <tbody>
+            {% for p in object_list %}
+            <tr>
+              <td>{{ p.id }}</td>
+              <td>{{ p.tipo }}</td>
+              <td>{{ p.denominacion }}</td>
+              <td>{{ p.fechapresentacion }}</td>
+              <td>{{ p.fechaotorgamiento }}</td>
+        
+              <td>
+                <a
+                href="{% url 'detail_pmu' p.id %}"
+                class="btn btn-info"
+                style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                ><i class="fa fa-search fa-sm" title="View Record"></i>
+                </a>
+
+                <a
+                href="{% url 'update_pmu' p.id %}"
+                class="btn btn-primary"
+                style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                ><i class="fa fa-edit fa-sm" title="Edit Record"></i>
+                </a>
+
+                <a
+                href="{% url 'delete_pmu' p.id %}"
+                class="btn btn-danger"
+                style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                ><i class="fa fa-trash fa-sm" title="Delete Record"></i>
+                </a>
+  
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+                  --> 
+      <!-- end we_do -->
+      <!-- about -->
+      
+      <!-- end about -->
+      <!-- portfolio -->
+     
+      <!-- end portfolio -->
+      <!-- chose -->
+     
+      <!-- end chose -->
+      <!-- contact -->
+    
+         
+      <!-- contact -->
+      <!-- footer -->
+      
+      <!-- end footer -->
+      <!-- Javascript files-->
+      <script src="{% static 'js/jquery.min.js' %}"></script>
+      <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+      <script src="{% static 'js/jquery-3.0.0.min.js' %}"></script>
+      <script src="{% static 'js/custom.js' %}"></script>
+
+   
+   </body>
+</html>
